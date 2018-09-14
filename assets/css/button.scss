@@ -1,0 +1,37 @@
+.btn {
+  border-radius: 0;
+}
+
+.btn-label {
+  position: relative;
+  display: inline-block;
+  float: left;
+}
+
+.btn-table-dropdown {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+.float {
+  position: absolute;
+  width:60px;
+  height:60px;
+  bottom:80px;
+  right:80px;
+  background-color:$primary-light;
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  box-shadow:         0 0 10px 0 rgba(0,0,0,0.50);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.float:hover {
+  color: $white;
+  box-shadow:         0 0 10px 0 rgba(0,0,0,0.80);
+}
+
+.my-float{
+  margin-top:22px;
+}

@@ -1,0 +1,78 @@
+// the ~ allows you to reference things in node_modules
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+// font
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import 'colors.scss';
+@import 'navbar.scss';
+@import 'shadow.scss';
+@import 'button.scss';
+@import 'footer.scss';
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  background-color: $main-background;
+  font-family: 'Montserrat', sans-serif;
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+@media (min-width: 1800px) {
+  .container{
+    width: 1360px;
+  }
+}
+
+#app {
+  min-height: 75vh;
+}
+
+.user-nav-item {
+  padding: 15px;
+}
+
+.fos-form {
+  background-color: #efefef;
+  margin: 200px auto 0 auto;
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 6px;
+}
+
+.success {
+  background-color: #83b83b;
+  color: #ffffff;
+  border: solid #ffffff;
+}
+
+.danger {
+  background-color: #eb332d;
+  color: #000000;
+  border: solid #000000;
+}
+
+.card {
+  background-color: #FFFFFF;
+  border: #696969 2px solid;
+  border-radius: 5px;
+  padding: 0 25px 25px 25px;
+  margin-bottom: 25px;
+}
+
+.free {
+  background-color: #b9b8b1 !important;
+  border: solid #ffffff !important;
+}
+
+.blocked {
+  background-color: #0071b9 !important;
+  border: solid #bababa !important;
+}
+.blocked h2, p{
+  color: #ffffff !important;
+}

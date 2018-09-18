@@ -12,6 +12,9 @@
                         <h4 class="modal-title" id="addServerModalLabel">Block <b>{{ server.name }}</b></h4>
                     </div>
                     <div class="modal-body">
+                        <div v-if="errMsg" class="alert alert-danger" role="alert">
+                            {{ errMsg }}
+                        </div>
                         <div class="form-group">
                             <label for="description">Why do you block this server?</label>
                             <input v-model="description" type="text" class="form-control" id="description" placeholder="Ticket No.">
@@ -37,30 +40,37 @@
             return {
                 blockServerRoute: '/secure/api/server/block/post',
                 description: '',
+                errMsg: '',
             }
         },
         methods: {
             blockServer: function () {
-                console.log(this.server.id);
-                console.log(this.description);
-                axios({
-                    method: 'post',
-                    url: this.blockServerRoute,
-                    data: {
-                        id: this.server.id,
-                        description: this.description,
-                    }
-                })
-                    .then((response)  => {
-                        if (response.status === 200) {
-                            location.reload();
-                            //TODO RELOAD THE ALL-SERVER COMPONENT
+                //console.log(this.server.id);
+                //console.log(this.description);
+                if (!this.description) {
+                    this.errMsg = 'Please set a reason!'
+                } else {
+                    axios({
+                        method: 'post',
+                        url: this.blockServerRoute,
+                        data: {
+                            id: this.server.id,
+                            description: this.description,
                         }
-                        console.log(response);
                     })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                        .then((response)  => {
+                            if (response.status === 200) {
+                                location.reload();
+                                //TODO RELOAD THE ALL-SERVER COMPONENT
+                            }
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+
+
             },
         }
     }

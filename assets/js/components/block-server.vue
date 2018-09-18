@@ -13,13 +13,13 @@
                         <h4 class="modal-title" id="addServerModalLabel">Block <b>{{ server.name }}</b></h4>
                     </div>
                     <div class="modal-body">
-                        <div v-if="errMsg" class="alert alert-danger" role="alert">
-                            {{ errMsg }}
-                        </div>
                         <div class="form-group">
                             <label for="description">Why do you block this server?</label>
                             <input v-model="description" type="text" class="form-control" id="description" placeholder="Ticket No.">
                         </div>
+                        <ul>
+                            <li v-for="error in errors">{{ error }}</li>
+                        </ul>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -41,15 +41,17 @@
             return {
                 blockServerRoute: '/secure/api/server/block/post',
                 description: '',
-                errMsg: '',
+                errors: [],
             }
         },
         methods: {
             blockServer: function () {
-                //console.log(this.server.id);
-                //console.log(this.description);
+                this.errors = [];
+
                 if (!this.description) {
-                    this.errMsg = 'Please set a reason!'
+                    this.errors.push('Please set a reason!');
+                } else if (this.description.length > 12) {
+                    this.errors.push('To long reason!');
                 } else {
                     axios({
                         method: 'post',
@@ -70,10 +72,8 @@
                             console.log(error);
                         });
                 }
-
-
             },
-        }
+        },
     }
 </script>
 

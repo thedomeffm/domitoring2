@@ -28,6 +28,11 @@
                 <li>
                     <add-server></add-server>
                 </li>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li>
+                        <a class="btn btn-default btn-outline btn-circle" href="{{ path('admin_user_create') }}"><b>+</b> User</a>
+                    </li>
+                {% endif %}
             </ul>
             <ul class="collapse nav navbar-nav nav-collapse" id="nav-collapse1">
                 {#<li><a href="#">Web design</a></li>

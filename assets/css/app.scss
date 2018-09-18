@@ -17,8 +17,6 @@ html {
 body {
   background-color: $main-background;
   font-family: 'Montserrat', sans-serif;
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
 }
 
 @media (min-width: 1800px) {
@@ -28,7 +26,7 @@ body {
 }
 
 #app {
-  min-height: 75vh;
+  min-height: 90vh;
 }
 
 .user-nav-item {

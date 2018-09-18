@@ -45,7 +45,9 @@
             {% block body %}{% endblock %}
         </div>
 
-        {% include 'partials/footer.html.twig' %}
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            {% include 'partials/footer.html.twig' %}
+        {% endif %}
 
         {% block javascripts %}
             <script src="{{ asset('build/app.js') }}"></script>

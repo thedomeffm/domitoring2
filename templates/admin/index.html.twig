@@ -5,17 +5,109 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <div class="col-sm-9"></div>
+            <div class="col-sm-9">
+                <ul>
+                    <li class="list-group-item list-group-item-heading">
+                        <b>Server</b>
+                    </li>
+                    <li class="list-group-item">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for server in servers %}
+                                <tr>
+                                    <td>{{ server.id }}</td>
+                                    <td>{{ server.name }}</td>
+                                    <td>
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#serverDelete{{ server.id }}">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <!-- Modal -->
+                                <div class="modal fade" id="serverDelete{{ server.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Remove {{ server.name }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <span class="black">Are you sure?</span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger" href="{{ path('admin_server_delete', {'server': server.id}) }}">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
+                </ul>
+
+            </div>
             <div class="col-sm-3">
                 <ul class="list-group">
                     <li class="list-group-item list-group-item-heading">
                         <b>User</b>
                     </li>
-                    {% for user in users %}
-                        <li class="list-group-item">
-                            {{ user.username }}
-                        </li>
-                    {% endfor %}
+                    <li class="list-group-item">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th class="text-right">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                                <tr>
+                                    <td>{{ user.username }}</td>
+                                    <td class="text-right">
+                                        {% if app.user.id != user.id %}
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#userDelete{{ user.id }}">
+                                                <span class="glyphicon glyphicon-trash"></span>
+                                            </button>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <!-- Modal -->
+                                <div class="modal fade" id="userDelete{{ user.id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <h4 class="modal-title" id="myModalLabel">Remove {{ user.username }}</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <span class="black">Are you sure?</span>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                <a class="btn btn-danger" href="{{ path('admin_user_delete', {'user': user.id}) }}">
+                                                    <span class="glyphicon glyphicon-trash"></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -11,7 +11,7 @@
 <body>
 
 <div id="app">
-    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% include 'partials/navbar.html.twig' %}
     {% endif %}
 
@@ -59,7 +59,9 @@
 
 </div>
 
-{% include 'partials/footer.html.twig' %}
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    {% include 'partials/footer.html.twig' %}
+{% endif %}
 
 {% block javascripts %}
     <script src="{{ asset('build/app.js') }}"></script>

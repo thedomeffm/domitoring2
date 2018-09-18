@@ -21,6 +21,13 @@
                     <span class="glyphicon glyphicon-heart"></span> logout
                 </a>
             </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a class="btn btn-circle btn-outline btn-primary" href="{{ path('admin') }}">
+                        <span class="glyphicon glyphicon-cog"></span> admin
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </footer>

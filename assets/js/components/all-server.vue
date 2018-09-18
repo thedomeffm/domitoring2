@@ -32,17 +32,26 @@
                 servers: [],
             }
         },
+        methods: {
+            getServers: function () {
+                axios.get(this.getServerRoute).then((response) => {
+                    console.log(response.data.data);
+                    if (response.data.data) {
+                        this.servers = response.data.data.servers;
+                    } else {
+                        console.error('no data from server');
+                    }
+                }, (response) => {
+                    console.log('ERROR: ' + response);
+                });
+            }
+        },
         created: function () {
-            axios.get(this.getServerRoute).then((response) => {
-                console.log(response.data.data);
-                if (response.data.data) {
-                    this.servers = response.data.data.servers;
-                } else {
-                    console.error('no data from server');
-                }
-            }, (response) => {
-                console.log('ERROR: ' + response);
-            });
+            this.getServers();
+
+            setInterval(function () {
+                this.getServers();
+            }.bind(this), 10000)
         },
     }
 </script>

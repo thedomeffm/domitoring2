@@ -3,17 +3,16 @@
         <div v-for="server in servers" class="col-sm-6">
             <div class="card" v-bind:class="server.status">
                 <h2>{{ server.name }}</h2>
-                <p v-if="server.description">{{ server.description }}</p>
-                <p v-else>free</p>
-                <p v-if="server.blockedBy">Blocked by: {{ server.blockedBy }}</p>
-                <p v-else>-</p>
                 <div v-if="server.status === 'free'">
+                    <p><span class="glyphicon glyphicon-list"></span></p>
+                    <span class="white"><span class="glyphicon glyphicon-user white"></span></span>
                     <block-server v-bind:server="server"></block-server>
                 </div>
-                <div v-else>
+                <div v-else-if="server.status === 'blocked'">
+                    <p><span class="glyphicon glyphicon-list"></span> {{ server.description }}</p>
+                    <span class="white"><span class="glyphicon glyphicon-user white"></span> {{ server.blockedBy }}</span>
                     <free-server v-bind:server="server"></free-server>
                 </div>
-
             </div>
         </div>
     </div>

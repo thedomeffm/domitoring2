@@ -1,7 +1,8 @@
 <template>
     <div>
+        <br>
         <button class="btn btn-default btn-circle" data-toggle="modal" v-bind:data-target="'#blockServerModal' + server.id"
-                aria-expanded="false" aria-controls="nav-collapse1">Block this Server</button>
+                aria-expanded="false" aria-controls="nav-collapse1">Block this Server <span class="glyphicon glyphicon-edit"></span></button>
 
         <!-- Modal -->
         <div class="modal fade" v-bind:id="'blockServerModal' + server.id" tabindex="-1" role="dialog" aria-labelledby="addServerModalLabel">

@@ -1,7 +1,8 @@
 <template>
     <div>
+        <br>
         <button class="btn btn-default btn-circle" data-toggle="modal" v-bind:data-target="'#freeServerModal' + server.id"
-                aria-expanded="false" aria-controls="nav-collapse1">Set free</button>
+                aria-expanded="false" aria-controls="nav-collapse1">Set free <span class="glyphicon glyphicon-check"></span></button>
 
         <!-- Modal -->
         <div class="modal fade" v-bind:id="'freeServerModal' + server.id" tabindex="-1" role="dialog" aria-labelledby="addServerModalLabel">

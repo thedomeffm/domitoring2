@@ -131,6 +131,7 @@ class ServerController extends AbstractController
             ->setStatus(Server::STATUS_FREE)
             ->setDescription(null)
             ->setBlockedSince(new \DateTime())
+            ->setBlockedBy(null)
         ;
 
         $em = $this->getDoctrine()->getManager();

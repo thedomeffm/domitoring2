@@ -1,5 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+
 <div class="fos-form">
     {% if error %}
         <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -9,17 +11,36 @@
         {% if csrf_token %}
             <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
         {% endif %}
-
-        <label for="username">{{ 'security.login.username'|trans }}</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
-
-        <label for="password">{{ 'security.login.password'|trans }}</label>
-        <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
-        <br>
-        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
-        <br>
+        <div class="form-group">
+            <label for="username">{{ 'security.login.username'|trans }}</label>
+            <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" autocomplete="username" />
+        </div>
+        <div class="form-group">
+            <label for="password">{{ 'security.login.password'|trans }}</label>
+            <input type="password" id="password" name="_password" required="required" autocomplete="current-password" />
+        </div>
+        <div class="form-group">
+            <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+            <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+        </div>
         <input class="btn btn-circle btn-default btn-block" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
     </form>
-
 </div>
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <div class="cookie">
+            </div>
+            <p class="text-center black">
+                We use cookies!<br>
+                <a target="_blank" href="https://www.adticket.de/impressum.html">Impressum</a>
+            </p>
+        </div>
+    </div>
+
+    
+{% else %}
+    <h2>You are already logged in!</h2>
+    To the <a href="{{ path('dashboard') }}">dashboard!</a>
+{% endif %}
+

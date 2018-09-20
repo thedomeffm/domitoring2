@@ -19,5 +19,15 @@ $brand-primary: darken(#428bca, 20%);
 }
 
 .black {
-  color: $black;
+  color: $black !important;
+}
+
+.heart {
+  font-size: 400%;
+  color: rgba(186, 1, 0, 0.25);
+  transition: 0.1s;
+}
+
+.heart:hover {
+  color: rgba(186, 1, 0, 1);
 }

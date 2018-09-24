@@ -30,8 +30,6 @@ class ServerController extends AbstractController
         $doctrine = $this->getDoctrine();
         $servers = $doctrine->getRepository('App:Server')->findAll();
 
-        $format = 'd.M H:i';
-
         foreach ($servers as $server) {
             $serverJson['id'] = $server->getId();
             $serverJson['name'] = $server->getName();
@@ -41,10 +39,8 @@ class ServerController extends AbstractController
                 $serverJson['blockedSince'] = $server->getBlockedSince();
                 $serverJson['blockedBy'] = $server->getBlockedBy();
                 $serverJson['description'] = $server->getDescription();
-                //$serverJson['blockedSinceFormat'] = $server->getBlockedSince()->format($format);
             }
             $serverJson['createdAt'] = $server->getCreatedAt();
-            $serverJson['createdAtFormat'] = $server->getCreatedAt()->format($format);
             $serverJson['description'] = $server->getDescription();
         }
 

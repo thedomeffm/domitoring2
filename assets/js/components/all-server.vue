@@ -10,10 +10,14 @@
                 </div>
                 <div v-else-if="server.status === 'blocked'">
                     <p><span class="glyphicon glyphicon-list"></span> {{ server.description }}</p>
-                    <span class="white"><span class="glyphicon glyphicon-user white"></span> {{ server.blockedBy }}</span>
+                    <!--<span class="white"><span class="glyphicon glyphicon-user white"></span> {{ server.blockedBy }} (since: {{ server.blockedSince | moment("from", "now", true) }})</span>-->
+                    <span class="white"><span class="glyphicon glyphicon-user white"></span> {{ server.blockedBy }} (since: {{ moment(server.blockedSince).fromNow(true) }})</span>
                     <free-server v-bind:server="server"></free-server>
                 </div>
             </div>
+        </div>
+        <div v-if="err">
+            <connection-error v-bind:message="errMsg"></connection-error>
         </div>
     </div>
 </template>
@@ -22,14 +26,17 @@
     import axios from 'axios';
     import BlockServer from "./block-server";
     import FreeServer from "./free-server";
+    import ConnectionError from "./connection-error";
 
     export default {
         name: "all-server",
-        components: {FreeServer, BlockServer},
+        components: {ConnectionError, FreeServer, BlockServer},
         data: function () {
             return {
                 getServerRoute: '/secure/api/server/get',
                 servers: [],
+                err: false,
+                errMsg: '',
             }
         },
         methods: {
@@ -38,17 +45,21 @@
                     console.log(response.data.data);
                     if (response.data.data) {
                         this.servers = response.data.data.servers;
+                        this.err = false;
                     } else {
-                        console.error('no data from server');
+                        console.error('data is empty');
+                        this.err = true;
+                        this.errMsg = 'data body is empty';
                     }
                 }, (response) => {
                     console.log('ERROR: ' + response);
+                    this.err = true;
+                    this.errMsg = 'Cant reach server!';
                 });
-            }
+            },
         },
         created: function () {
             this.getServers();
-
             setInterval(function () {
                 this.getServers();
             }.bind(this), 10000)

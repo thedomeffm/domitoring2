@@ -1,4 +1,6 @@
 import Vue from 'vue';
+import moment from 'moment';
+Vue.prototype.moment = moment;
 
 /*
 import transFilter from 'vue-trans';
@@ -19,6 +21,7 @@ import allServer from './components/all-server';
 import addServer from './components/add-server';
 import blockServer from './components/block-server';
 import freeServer from './components/free-server';
+import connectionError from './components/connection-error';
 
 // vue
 var view = new Vue({
@@ -28,5 +31,6 @@ var view = new Vue({
         addServer,
         blockServer,
         freeServer,
+        connectionError,
     }
 });

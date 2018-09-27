@@ -49,7 +49,7 @@
                     } else {
                         console.error('data is empty');
                         this.err = true;
-                        this.errMsg = 'data body is empty';
+                        this.errMsg = 'data body is empty - please reload the page';
                     }
                 }, (response) => {
                     console.log('ERROR: ' + response);

@@ -2,28 +2,28 @@
     <div class="container">
         <ul class="list-inline">
             <li>
-                <a class="btn btn-circle btn-outline btn-primary" href="{{ path('fos_user_profile_edit') }}">
+                <a class="btn btn-circle btn-outline btn-primary btn-tb" href="{{ path('fos_user_profile_edit') }}">
                     edit profile
                 </a>
             </li>
             <li>
-                <a class="btn btn-circle btn-outline btn-primary" href="{{ path('fos_user_change_password') }}">
+                <a class="btn btn-circle btn-outline btn-primary btn-tb" href="{{ path('fos_user_change_password') }}">
                     change password
                 </a>
             </li>
             <li>
-                <a class="btn btn-circle btn-outline btn-primary" href="{{ path('love_dome') }}">
+                <a class="btn btn-circle btn-outline btn-primary btn-tb" href="{{ path('love_dome') }}">
                     <span class="glyphicon glyphicon-heart"></span> love dome
                 </a>
             </li>
             <li>
-                <a class="btn btn-circle btn-outline btn-primary" href="{{ path('fos_user_security_logout') }}">
+                <a class="btn btn-circle btn-outline btn-primary btn-tb" href="{{ path('fos_user_security_logout') }}">
                     logout
                 </a>
             </li>
             {% if is_granted('ROLE_ADMIN') %}
                 <li>
-                    <a class="btn btn-circle btn-outline btn-primary" href="{{ path('admin') }}">
+                    <a class="btn btn-circle btn-outline btn-primary btn-tb" href="{{ path('admin') }}">
                         <span class="glyphicon glyphicon-cog"></span> admin
                     </a>
                 </li>

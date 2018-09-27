@@ -18,7 +18,8 @@ require('bootstrap-sass');
 
 // my components
 import allServer from './components/all-server';
-import addServer from './components/add-server';
+import addServerButton from './components/add-server-button';
+import addServerModal from './components/add-server-modal';
 import blockServer from './components/block-server';
 import freeServer from './components/free-server';
 import connectionError from './components/connection-error';
@@ -28,7 +29,8 @@ var view = new Vue({
     el: '#app',
     components: {
         allServer,
-        addServer,
+        addServerButton,
+        addServerModal,
         blockServer,
         freeServer,
         connectionError,

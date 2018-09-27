@@ -16,8 +16,8 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a class="btn btn-circle btn-outline" href="{{ path('dashboard') }}">
-                        <span class="glyphicon glyphicon-th-large"></span>
+                    <a class="btn btn-default btn-circle btn-outline btn-lr" href="{{ path('dashboard') }}">
+                        <span class="glyphicon glyphicon-th-large"></span> Dashboard
                     </a>
                 </li>
                 {#<li><a href="#">About</a></li>
@@ -30,13 +30,14 @@
                        aria-expanded="false" aria-controls="nav-collapse1"><b>+</b> Server</a>
                 </li>#}
                 <li>
-                    <add-server></add-server>
+                    <add-server-button></add-server-button>
                 </li>
                 {% if is_granted('ROLE_ADMIN') %}
                     <li>
-                        <a class="btn btn-default btn-outline btn-circle" href="{{ path('admin_user_create') }}"><b>+</b> User</a>
+                        <a class="btn btn-default btn-outline btn-circle btn-lr" href="{{ path('admin_user_create') }}"><b>+</b> User</a>
                     </li>
                 {% endif %}
+                <li class="visible-xs"><a class="btn btn-primary btn-outline btn-circle btn-lr" href="{{ path('fos_user_security_logout') }}">Logout</a></li>
             </ul>
             <ul class="collapse nav navbar-nav nav-collapse" id="nav-collapse1">
                 {#<li><a href="#">Web design</a></li>
@@ -49,3 +50,4 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->
+<add-server-modal></add-server-modal>

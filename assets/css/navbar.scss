@@ -13,6 +13,14 @@
 
 .btn.btn-circle { border-radius: 50px; }
 .btn.btn-outline { background-color: transparent; }
+.btn.btn-lr {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+.btn.btn-tb {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
 
 @media screen and (max-width: 767px) {
   .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; }
